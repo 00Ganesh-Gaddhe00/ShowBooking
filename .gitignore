@@ -1,13 +1,7 @@
-client/package-lock.json
-client/package.json
 client/README.md
 client/public/index.html
 client/public/manifest.json
 client/public/robots.txt
-client/src/App.css
-client/src/App.js
 client/src/App.test.js
-client/src/index.css
-client/src/index.js
 client/src/reportWebVitals.js
 client/src/setupTests.js

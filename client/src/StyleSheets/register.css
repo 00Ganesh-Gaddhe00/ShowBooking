@@ -1,0 +1,26 @@
+.main{
+    /* background-color: rgb(234, 244, 255); */
+    /* background-color: #f3f8ff; */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.reg_cont{
+    width: 450px;
+    padding-inline: 2rem;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 3px 3px 3rem 5px hsla(0, 0%, 49%, 0.096)
+}
+
+.reg_heading{
+    font-weight:bolder;
+    font-size:x-large;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
