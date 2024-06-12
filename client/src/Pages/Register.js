@@ -1,12 +1,26 @@
 import React from 'react'
-import { Button, Checkbox, Form, Input } from 'antd';
-import {Link} from "react-router-dom"
+import { Button, Form, Input, message } from 'antd';
+import {Link, useNavigate} from "react-router-dom"
+import { RegisterUser } from '../APIcalls/users';
 
 
 function Register() {
+  const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const onFinish = async(values) => {
+    try{
+       const response = await RegisterUser(values)
+       if(response.success){
+          message.success(response.message)
+          navigate("/Login")
+         }
+         else{
+          message.error(response.message)
+         }
+    }
+    catch(err){
+      message.error(err)
+    }
   };
 
   return (
