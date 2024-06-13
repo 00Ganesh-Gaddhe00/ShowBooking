@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Form, Input, message } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../APIcalls/users';
 
 
@@ -71,7 +71,7 @@ const navigate = useNavigate()
 
     <Form.Item>
       <Button 
-      style={{ fontSize: "15px", fontWeight: "600" }}
+      style={{ fontSize: "15px", fontWeight: "600"}}
        type="primary" htmlType="submit" block>
         Sign Up
       </Button>
