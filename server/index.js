@@ -1,5 +1,7 @@
 const express = require("express")
 require("./dbConfig.js");
+require('dotenv').config()
+
 
 
 //routes

@@ -1,6 +1,7 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { Button, Form, Input, message } from 'antd';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginUser } from '../APIcalls/users';
 
 
@@ -10,8 +11,11 @@ const navigate = useNavigate()
     const onFinish = async(values) => {
          try{
          const response = await LoginUser(values)
+        //  console.log(response)
          if(response.success){
           message.success(response.message)
+          // console.log(response)
+          localStorage.setItem("token", response.data)
              navigate("/")
          }
          else{
@@ -24,6 +28,13 @@ const navigate = useNavigate()
          }
       };
 
+      
+      useEffect(()=>{
+        if(localStorage.getItem('token')){
+          navigate('/')
+        }
+      },[])
+    
 
 
   

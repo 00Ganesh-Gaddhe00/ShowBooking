@@ -1,8 +1,10 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
-
+const jwt = require("jsonwebtoken")
 const User = require("../models/usermodel")
 const router = express.Router();
+const auth = require("../middlewares/authMiddleware")
+require('../')
 
 
 //register
@@ -60,14 +62,31 @@ router.post("/login", async (req, res) => {
       })
       return;
     }
+   const token = jwt.sign({userId : user._id}, process.env.SECRET_TOKEN_KEY, {expiresIn:"1d"})
 
     res.send({
       success:true,
-      message:"login successful"
+      message:"login successful",
+      data:token
     })
 
   }
   catch (err) {
+    console.log(err)
+  }
+})
+
+
+router.get("/get-current-user", auth, async(req, res)=>{
+  try{
+    const user = await User.findById(req.body.userId).select("-password");
+    res.send({
+      success:true,
+      message:" User Authorized",
+      data:user
+    })
+  }
+  catch(err){
     console.log(err)
   }
 })
