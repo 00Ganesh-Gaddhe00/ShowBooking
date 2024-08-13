@@ -26,7 +26,7 @@ router.post('/add-theatre', async(req, res)=>{
 router.put('/update-theatre',  async (req, res) => {
     try{
         await Theatre.findByIdAndUpdate(req.body.theatreId, req.body);
-        // console.log(req.body.theatreId)
+        // console.log(req.body)
         res.send({
             success: true,
             message: "Theatre has been updated!"
