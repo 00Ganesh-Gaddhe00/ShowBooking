@@ -24,12 +24,17 @@ function ProtectedRoute({ children }) {
     const getpresentUser = async () => {
         try {
           // dispatch(ShowLoading());
-           console.log(localStorage.getItem('token'))
           const response = await GetCurrentUser();
           // console.log(response)
           // dispatch(HideLoading());
-            
-            dispatch(setUser(response.data));
+            if(response.success){
+              dispatch(setUser(response.data));
+              
+            }else {
+              dispatch(setUser(null));
+              message.error(response.message);
+
+            }
           
         } catch (error) {
         //   dispatch(HideLoading());
@@ -51,7 +56,9 @@ function ProtectedRoute({ children }) {
       const navItems = [
         {
           key:1,
-          label: "Home",
+          label: (
+            <Link to='/'>Home</Link>
+          ),
           icon: <HomeOutlined />,
         },
     

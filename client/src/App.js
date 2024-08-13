@@ -5,6 +5,8 @@ import Login from './Pages/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ProtectedRoute from './components/ProtectedRoute';
 import { useSelector } from 'react-redux';
+import Admin from './Pages/Admin';
+import Profile from './Pages/profile';
 //stylesheets
 import './StyleSheets/register.css';
 
@@ -29,6 +31,9 @@ function App() {
           <Route path='/' element={ <ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
+          <Route path='/admin' element={ <ProtectedRoute><Admin></Admin></ProtectedRoute>} />
+          <Route path='/profile' element={ <ProtectedRoute><Profile></Profile></ProtectedRoute>} />
+         
         </Routes>
       </BrowserRouter>
 
