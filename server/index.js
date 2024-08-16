@@ -9,6 +9,7 @@ require('dotenv').config()
 //routes
 const UserRoutes = require("./routes/userRoutes.js")
 const TheatreRoutes = require('./routes/theatreRoutes.js')
+const movieRoutes = require('./routes/movieRoutes')
 
 const app = express();
 const port = 5000
@@ -20,7 +21,7 @@ app.use(express.json())
 
 app.use("/api/users", UserRoutes)
 app.use("/api/theatres", TheatreRoutes)
-
+app.use('/api/movies' , movieRoutes )
 
 
 
