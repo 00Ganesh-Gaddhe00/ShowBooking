@@ -77,7 +77,7 @@ router.put('/update-movie', async (req, res) => {
 router.put('/delete-movie',  async (req, res) => {
     try{
         await Movie.findByIdAndDelete(req.body.movieId);
-        console.log(req.body.movieId);
+        // console.log(req.body.movieId);
         res.send({
             success: true,
             message: 'The movie has been deleted!',

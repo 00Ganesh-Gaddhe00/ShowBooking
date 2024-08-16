@@ -111,11 +111,10 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
                   <Form.Item  label="Select Movie Genre" htmlFor='genre' name="genre" className='d-block' rules={[{required: true, message: "Movie genre  is required!"}]}>
                     <Select defaultValue="Select Movie" style={{ width: "100%" }} onChange={handleChange} options={[
                       { value: 'Action', label: 'Action' },
+                      { value: 'Sci-Fi', label: 'Sci-Fi'},
                       { value: 'Comedy', label: 'Comedy' },
                       { value: 'Horror', label: 'Horror' },
                       { value: 'Love', label: 'Love'},
-                      { value: 'Patriot', label: 'Patriot'},
-                      { value: 'Bhakti', label: 'Bhakti'},
                       { value: 'Thriller', label: 'Thriller'},
                       { value: 'Mystery', label: 'Mystery'},
                     ]}  />      

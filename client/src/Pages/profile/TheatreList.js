@@ -6,6 +6,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { getAllTheatres } from '../../APIcalls/theatres'
 import { useSelector, useDispatch } from 'react-redux';
 // import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import ShowModal from './ShowModal';
 
 
 const TheatreList = () => {
@@ -16,6 +17,7 @@ const TheatreList = () => {
     const [formType, setFormType] = useState("add"); 
     const [theatres, setTheatres] = useState(null);
     const dispatch = useDispatch();
+    const [isShowModalOpen, setIsShowModalOpen] = useState(false);
 
     const getData = async () => {
         try{
@@ -80,6 +82,7 @@ const TheatreList = () => {
               <div className='d-flex align-items-center gap-10'>
                 <Button onClick={() => { setIsModalOpen(true); setFormType("edit"); setSelectedTheatre(data) }}><EditOutlined/></Button>
                 <Button onClick={ () => { setIsDeleteModalOpen(true); setSelectedTheatre(data); }}><DeleteOutlined/></Button>
+                { data.isActive && <Button onClick={ () => { setIsShowModalOpen(true); setSelectedTheatre(data); }}>+ Shows</Button> }
               </div>
             )
           }
@@ -99,6 +102,9 @@ const TheatreList = () => {
         { isModalOpen && <TheatreFormModal isModalOpen={isModalOpen} selectedTheatre={selectedTheatre} setSelectedTheatre={setSelectedTheatre} setIsModalOpen={setIsModalOpen} formType={formType} getData={getData} /> }
         { 
             isDeleteModalOpen && <DeleteTheatreModal isDeleteModalOpen={isDeleteModalOpen} selectedTheatre={selectedTheatre} setIsDeleteModalOpen={setIsDeleteModalOpen} setSelectedTheatre={setSelectedTheatre} getData={getData} /> 
+        }
+        {
+          isShowModalOpen && <ShowModal isShowModalOpen={isShowModalOpen} setIsShowModalOpen={setIsShowModalOpen} selectedTheatre={selectedTheatre}/>
         }
 
         </>
