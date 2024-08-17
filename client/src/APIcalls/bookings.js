@@ -20,9 +20,9 @@ export const bookShow = async (payload) => {
     }
 }
 
-export const getAllBookings = async () => {
+export const getAllBookings = async (userid) => {
     try{
-        const response = await axiosInstance.get('/api/bookings/get-all-bookings');
+        const response = await axiosInstance.get('/api/bookings/get-all-bookings', { params:{userid}});
         return response.data;
     }catch(err){
         return err.response;

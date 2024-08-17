@@ -66,9 +66,12 @@ router.post('/book-show', async (req, res) => {
 });
 
 
+
 router.get("/get-all-bookings",  async (req, res) => {
     try{
-        const bookings = await Booking.find({ user: req.body.userId })
+        // console.log(req.body.userId)
+        const {userid} = req.query
+        const bookings = await Booking.find({user:userid})
         .populate("user")
         .populate("show")
             .populate({
