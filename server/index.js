@@ -11,6 +11,7 @@ const UserRoutes = require("./routes/userRoutes.js")
 const TheatreRoutes = require('./routes/theatreRoutes.js')
 const movieRoutes = require('./routes/movieRoutes')
 const showRoutes = require('./routes/showRoutes')
+const bookingRoutes = require('./routes/bookingRoute.js')
 
 
 
@@ -26,6 +27,7 @@ app.use("/api/users", UserRoutes)
 app.use("/api/theatres", TheatreRoutes)
 app.use('/api/movies' , movieRoutes )
 app.use('/api/shows' , showRoutes)
+app.use('/api/bookings' , bookingRoutes )
 
 
 

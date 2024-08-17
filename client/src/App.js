@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import Admin from './Pages/Admin';
 import Profile from './Pages/profile';
 import SingleMovie from './Pages/SingleMovie';
+import BookShow from './Pages/BookShow';
 //stylesheets
 import './StyleSheets/register.css';
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/Register' element={<Register />} />
           <Route path='/admin' element={ <ProtectedRoute><Admin></Admin></ProtectedRoute>} />
           <Route path='/profile' element={ <ProtectedRoute><Profile></Profile></ProtectedRoute>} />
+          <Route path="/book-show/:id" element={<ProtectedRoute><BookShow/></ProtectedRoute>}/>
          
         </Routes>
       </BrowserRouter>
