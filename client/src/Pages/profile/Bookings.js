@@ -3,26 +3,29 @@ import { useEffect, useState } from "react";
 import moment from 'moment';
 import { Link } from "react-router-dom";
 import { getAllBookings } from "../../APIcalls/bookings";
-import {useSelector } from 'react-redux'
-
+import {useSelector,useDispatch } from 'react-redux'
+import { showLoading,hideLoading } from "../../redux/loaderslice";
 
 const Bookings = () => {
 
     const {user} = useSelector((state)=> state.user)
     console.log(user)
     const [bookings, setBookings] = useState([]);
+    const dispatch = useDispatch()
 
     const getData = async (userid) => {
         try{
+            dispatch(showLoading);
             const response = await getAllBookings(userid);
             if(response.success){
                 setBookings(response.data);
-                 console.log(response.data);
+                //  console.log(response.data);
             }else{
                 message.error(response.message);
             }
-
+            dispatch(hideLoading)
         }catch(err){
+            dispatch(hideLoading)
             message.error(err.message);
         }
     }

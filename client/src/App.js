@@ -9,6 +9,10 @@ import Admin from './Pages/Admin';
 import Profile from './Pages/profile';
 import SingleMovie from './Pages/SingleMovie';
 import BookShow from './Pages/BookShow';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin } from 'antd';
+import { useState } from 'react';
+
 //stylesheets
 import './StyleSheets/register.css';
 
@@ -16,16 +20,27 @@ function App() {
 
   const { loading } = useSelector((state) => state.loader);
 
-
   return (
     <div>
        
-       {loading &&(
-            <div className="loader-container">
-          {" "}
-          <div className="loader"> </div>{" "}
-        </div>
-        )}
+       {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+          }}
+        >
+          <Spin size="large"  indicator={<LoadingOutlined style={{ fontSize: 48 , color:'brown'}} spin/>}/>        
+          </div>
+      )}
         
 
       <BrowserRouter>

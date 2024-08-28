@@ -4,7 +4,7 @@ import MovieFormModal from './MovieFormModal';
 import DeleteMovieModal from './DeleteMovieModal';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import { getAllMovies } from '../../APIcalls/movies'
 import moment from 'moment';
 
@@ -43,7 +43,7 @@ const MovieList = () => {
 
     const getData = async () => {
       try{
-        // dispatch(showLoading());
+        dispatch(showLoading());
         const response = await getAllMovies();
         if(response.success){
           const allMovies = response.data;
@@ -55,10 +55,10 @@ const MovieList = () => {
         }else{
           message.error(response.message)
         }
-        // dispatch(hideLoading())
+        dispatch(hideLoading())
 
       }catch(err){
-        // dispatch(hideLoading());
+        dispatch(hideLoading());
         message.error(err.message);
       }
     }
@@ -128,7 +128,9 @@ const MovieList = () => {
     return(
         <>
           <div className='d-flex justify-content-end'>
-            <Button type="primary" onClick={() => { setIsModalOpen(true); setFormType("add") }}>Add Movie</Button>
+            <Button type="primary" onClick={() => { setIsModalOpen(true); setFormType("add") }} 
+              style={{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}
+              >Add Movie</Button>
           </div>   
           <Table dataSource={movies} columns={columns} />
           { isModalOpen && <MovieFormModal isModalOpen={isModalOpen} selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} setIsModalOpen={setIsModalOpen} formType={formType} getData={getData} /> }

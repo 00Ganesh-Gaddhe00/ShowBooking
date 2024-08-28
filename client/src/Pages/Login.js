@@ -40,7 +40,7 @@ const navigate = useNavigate()
   
 
   return (
-    <div className=' main'> 
+    <div className=' main base'> 
     <div className='reg_cont'>
       <div className='reg_heading'>Welcome back to BoOkSh0w</div>
     <Form
@@ -82,7 +82,7 @@ const navigate = useNavigate()
 
     <Form.Item>
       <Button 
-      style={{ fontSize: "15px", fontWeight: "600"}}
+      style={{ fontSize: "15px", fontWeight: "600", backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}
        type="primary" htmlType="submit" block>
         Sign Up
       </Button>

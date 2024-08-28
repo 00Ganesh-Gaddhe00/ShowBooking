@@ -1,5 +1,5 @@
 import { Col, Modal, Row, Form,  Input, Button, Select, Table, message} from 'antd';
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import { useDispatch } from 'react-redux';
 // import { addTheatre, updateTheatre } from '../../apicalls/theatres';
 import {ArrowLeftOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
@@ -19,7 +19,7 @@ const ShowModal = ({isShowModalOpen, setIsShowModalOpen, selectedTheatre}) => {
 
     const getData = async () => {
         try{
-            // dispatch(showLoading());
+            dispatch(showLoading());
             const movieResponse = await getAllMovies();
             if(movieResponse.success){
                 setMovies(movieResponse.data);
@@ -34,10 +34,10 @@ const ShowModal = ({isShowModalOpen, setIsShowModalOpen, selectedTheatre}) => {
                 message.error(showResponse.message);
             }
 
-            // dispatch(hideLoading())
+            dispatch(hideLoading())
         }catch(err){
             message.error(err.message);
-            // dispatch(hideLoading());
+            dispatch(hideLoading());
         }
     }
 
@@ -153,7 +153,7 @@ const ShowModal = ({isShowModalOpen, setIsShowModalOpen, selectedTheatre}) => {
         <Modal centered title={selectedTheatre.name} open={isShowModalOpen} onCancel={handleCancel} width={1200} footer={null} >
         <div className='d-flex justify-content-between'>
             <h3>{view === "table" ? "List of Shows" : view === "form" ? "Add Show" : "Edit Show"}</h3>
-            {view === "table" && <Button type="primary" onClick={() => setView("form")}>Add Show</Button>}
+            {view === "table" && <Button type="primary" onClick={() => setView("form")} style={{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}>Add Show</Button>}
         </div>
         {view === "table" && <Table dataSource={shows} columns={columns} />}
 
@@ -217,7 +217,7 @@ const ShowModal = ({isShowModalOpen, setIsShowModalOpen, selectedTheatre}) => {
             </Row>          
             <div className='d-flex gap-10'>
                 <Button className='' block onClick={() => {setView("table"); }} htmlType='button'><ArrowLeftOutlined/> Go Back</Button>
-                <Button block type="primary" htmlType='submit' style={{fontSize: "1rem", fontWeight: "600"}}>{ view === "form" ? 'Add the Show' : 'Edit the Show'}</Button>
+                <Button block type="primary" htmlType='submit' style={{fontSize: "1rem", fontWeight: "600", backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}>{ view === "form" ? 'Add the Show' : 'Edit the Show'}</Button>
             </div>
         </Form> }
       </Modal>     

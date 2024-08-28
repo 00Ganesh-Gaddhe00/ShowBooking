@@ -10,11 +10,15 @@
 }
 
 .reg_cont{
+    background-color: #ffffffd3;
+    /* background-color: rgba(10, 40, 115, 0.251); */
+    /* background-image:linear-gradient(to bottom, #ccd1d1, #85929e) ; */
     width: 450px;
     padding-inline: 2rem;
     overflow: hidden;
     text-align: center;
-    box-shadow: 3px 3px 3rem 5px hsla(0, 0%, 49%, 0.096)
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
 }
 
 .reg_heading{

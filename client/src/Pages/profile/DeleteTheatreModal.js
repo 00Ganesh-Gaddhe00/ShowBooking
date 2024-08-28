@@ -1,6 +1,6 @@
 import { Modal, message } from "antd";
 import { deleteTheatre } from '../../APIcalls/theatres';
-// import { showLoading, hideLoading } from "../../redux/loadersSlice";
+import { showLoading, hideLoading } from "../../redux/loaderslice";
 import { useDispatch } from "react-redux";
 
 const DeleteTheatreModal = ({
@@ -13,7 +13,7 @@ const DeleteTheatreModal = ({
   const dispatch = useDispatch();
   const handleOk = async () => {
     try {
-    //   dispatch(showLoading);
+      dispatch(showLoading);
       const theatreId = selectedTheatre._id;
       const response = await deleteTheatre({ theatreId });
       console.log(theatreId, response);
@@ -25,9 +25,9 @@ const DeleteTheatreModal = ({
         setSelectedTheatre(null);
       }
       setIsDeleteModalOpen(false);
-    //   dispatch(hideLoading);
+      dispatch(hideLoading);
     } catch (err) {
-    //   dispatch(hideLoading);
+      dispatch(hideLoading);
       setIsDeleteModalOpen(false);
       message.error(err.messagae);
     }

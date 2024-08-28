@@ -6,6 +6,8 @@ import { message, Card, Row, Col, Button } from "antd";
 import moment from 'moment';
 import StripeCheckout from 'react-stripe-checkout';
 import { bookShow, makePayment } from "../APIcalls/bookings";
+import { hideLoading, showLoading } from "../redux/loaderslice";
+
 
 const BookShow = () => {
     const { user } = useSelector((state) => state.user);
@@ -17,6 +19,7 @@ const BookShow = () => {
 
     const getData = async () => {
         try{
+            dispatch(showLoading());
             const response = await getShowById({showId: params.id});
             if(response.success){
                 setShow(response.data);
@@ -24,7 +27,10 @@ const BookShow = () => {
             }else{
                 message.error(response.message)
             }
+            dispatch(hideLoading());
+
         }catch(err){
+            dispatch(hideLoading());
             message.error(err.message);
         }
     }
@@ -41,6 +47,7 @@ const BookShow = () => {
                     <div className="screen-div">
                     </div>
                 </div>
+                <div className="seatsalign">
                 <ul className="seat-ul justify-content-center">
                     { Array.from(Array(rows).keys()).map((seat, idx) => 
                         { return (Array.from(Array(columns).keys()).map((column, idx) => {
@@ -66,7 +73,7 @@ const BookShow = () => {
                         )
                     })}
                 </ul>
-
+              </div>
                 <div className="d-flex bottom-card justify-content-between w-100 max-width-600 mx-auto mb-25px mt-3">
                     <div className="flex-1">Selected Seats: <span>{ selectedSeats.join(", ") }</span></div>
                     <div className="flex-shrink-0 ms-3">Total Price: <span>Rs. { selectedSeats.length * show.ticketPrice  }</span></div>

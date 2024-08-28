@@ -1,6 +1,6 @@
 import { Col, Modal, Row, Form,  Input, Select, Button, message} from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import { useDispatch } from 'react-redux';
 import { addMovie, updateMovie } from '../../APIcalls/movies'
 import moment from 'moment';
@@ -18,14 +18,14 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
 
   const onFinish = async (values)  => {
     try{
-    //   dispatch(showLoading());
+      dispatch(showLoading());
       let response = null;
       if(formType === "add"){
         response = await addMovie(values);
       }else{
         response = await updateMovie({...values, movieId: selectedMovie._id});
       }
-      console.log(response);
+      // console.log(response);
       if(response.success){
         getData();
         message.success(response.message);
@@ -33,9 +33,9 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
       }else{
         message.error(response.message)
       }
-    //   dispatch(hideLoading());     
+      dispatch(hideLoading());     
     }catch(err){
-    //   dispatch(hideLoading());
+      dispatch(hideLoading());
       message.error(err.message);
     }
   }
@@ -88,8 +88,8 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
                   { value: 'Hindi', label: 'Hindi' },
                   { value: 'Punjabi', label: 'Punjabi' },
                   { value: 'Telugu', label: 'Telugu'},
-                  { value: 'Bengali', label: 'Bengali'},
-                  { value: 'German', label: 'German'},
+                  { value: 'Kannada', label: 'Kannada'},
+                  { value: 'Tamil', label: 'Tamil'},
                 ]} />     
                 </Form.Item>
               </Col>
@@ -114,9 +114,9 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
                       { value: 'Sci-Fi', label: 'Sci-Fi'},
                       { value: 'Comedy', label: 'Comedy' },
                       { value: 'Horror', label: 'Horror' },
-                      { value: 'Love', label: 'Love'},
+                      { value: 'Romantic', label: 'Romantic'},
                       { value: 'Thriller', label: 'Thriller'},
-                      { value: 'Mystery', label: 'Mystery'},
+                      { value: 'Drama', label: 'Drama'},
                     ]}  />      
                     </Form.Item>
                   </Col>
@@ -129,7 +129,7 @@ const MovieFormModal = ({isModalOpen, setIsModalOpen, formType, selectedMovie, s
             </Col>            
           </Row>          
           <Form.Item>
-              <Button block type="primary" htmlType='submit' style={{fontSize: "1rem", fontWeight: "600"}}>Submit the Data</Button>
+              <Button block type="primary" htmlType='submit' style={{fontSize: "1rem", fontWeight: "600", backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}>Submit the Data</Button>
               <Button className='mt-3' block onClick={handleCancel}>Cancel</Button>
           </Form.Item>
       </Form>

@@ -1,13 +1,13 @@
 import { Modal, message } from 'antd';
 import { deleteMovie } from '../../APIcalls/movies';
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import { useDispatch } from 'react-redux';
 
 const DeleteMovieModal = ({isDeleteModalOpen, setIsDeleteModalOpen, selectedMovie, setSelectedMovie, getData}) => {
     const dispatch =  useDispatch()
     const handleOk = async () => {
         try{
-            // dispatch(showLoading);
+            dispatch(showLoading);
             const movieId = selectedMovie._id;
             const response = await deleteMovie({ movieId });
             console.log(movieId, response);
@@ -19,10 +19,10 @@ const DeleteMovieModal = ({isDeleteModalOpen, setIsDeleteModalOpen, selectedMovi
                 setSelectedMovie(null);
             }
             setIsDeleteModalOpen(false);
-            // dispatch(hideLoading);
+            dispatch(hideLoading);
 
         }catch(err){
-            // dispatch(hideLoading);
+            dispatch(hideLoading);
             setIsDeleteModalOpen(false)
             message.error(err.messagae);
         }        

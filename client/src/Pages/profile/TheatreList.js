@@ -5,7 +5,7 @@ import DeleteTheatreModal from './DeleteTheatreModal';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { getAllTheatres } from '../../APIcalls/theatres'
 import { useSelector, useDispatch } from 'react-redux';
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import ShowModal from './ShowModal';
 
 
@@ -21,7 +21,7 @@ const TheatreList = () => {
 
     const getData = async () => {
         try{
-        //   dispatch(showLoading());
+          dispatch(showLoading());
           const response = await getAllTheatres({ owner: user._id });
           if(response.success){
             const allTheatres = response.data;
@@ -34,10 +34,10 @@ const TheatreList = () => {
           }else{
             message.error(response.message)
           }
-        //   dispatch(hideLoading())
+          dispatch(hideLoading())
 
         }catch(err){
-        //   dispatch(hideLoading());
+          dispatch(hideLoading());
           message.error(err.message);
         }
       }
@@ -96,7 +96,7 @@ const TheatreList = () => {
     return(
         <>
         <div className='d-flex justify-content-end'>
-            <Button type="primary" onClick={() => { setIsModalOpen(true); setFormType("add") }}>Add Theatre</Button>
+            <Button type="primary" onClick={() => { setIsModalOpen(true); setFormType("add") }} style={{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"}}>Add Theatre</Button>
         </div>   
         <Table dataSource={theatres} columns={columns} />
         { isModalOpen && <TheatreFormModal isModalOpen={isModalOpen} selectedTheatre={selectedTheatre} setSelectedTheatre={setSelectedTheatre} setIsModalOpen={setIsModalOpen} formType={formType} getData={getData} /> }

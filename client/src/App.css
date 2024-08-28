@@ -4,6 +4,7 @@
   }
   .App-header {
     background-color: #f3f8ff;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -79,8 +80,16 @@
   .justify-content-between{
     justify-content: space-between;
   }
+  .justify-content-center{
+    justify-content: center;
+  }
   .justify-content-end{
+    display: flex;
     justify-content: end;
+  }
+
+  .justify-content-evenly{
+    justify-content:space-evenly;
   }
   .fs-12{
     font-size: 12px;
@@ -182,12 +191,14 @@
     margin: 0;
     display: flex;
     gap: 0.5rem;
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 600px;
   }
   .seat-ul .seat-btn{
     background-color: #f6f6f6;
     border: 1px solid #a0a0a0;
+    border-radius: 5px;
     width: 40px;
     height: 35px;
     text-align: center;
@@ -306,3 +317,44 @@
       margin-bottom: 1rem;
     }
 }
+
+.seatsalign{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home-body{
+  background-color: #ffffffd3;
+  /* background-image:linear-gradient(to right, #f8f9f9, #fbfcfc) ; */
+
+  /* backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(10px);  */
+    margin-inline: 2rem;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+
+.card-shawdow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.base{
+  
+
+    background:  linear-gradient( rgba(255, 255, 255, 0.785), rgba(255, 255, 255, 0.773)),
+                     url('../src/assets/bookShowbackdrop.jpg');
+    /* background-size: cover; */
+    /* background-position: center;  */
+   
+  }
+
+  .profile-page{
+    
+    background-color: #ffffffd3;
+    padding: 2rem;
+    box-sizing:content-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+  }

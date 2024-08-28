@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react'
 import { getAllTheatresForAdmin, updateTheatre } from '../../APIcalls/theatres'
-// import { showLoading, hideLoading } from '../../redux/loadersSlice';
+import { showLoading, hideLoading } from '../../redux/loaderslice';
 import { useDispatch } from 'react-redux';
 import { message, Button, Table } from 'antd';
 
@@ -13,7 +13,7 @@ function TheatresTable() {
 
    const getData = async ()=>{
     try{
-        // dispatch(showLoading());
+        dispatch(showLoading());
         const response = await getAllTheatresForAdmin();
         if(response.success){
           const allTheatres = response.data;
@@ -25,17 +25,17 @@ function TheatresTable() {
         }else{
           message.error(response.message)
         }
-        // dispatch(hideLoading())
+        dispatch(hideLoading())
 
       }catch(err){
-        // dispatch(hideLoading());
+        dispatch(hideLoading());
         message.error(err.message);
       }
    }
 
    const handleStatusChange = async (theatre) => {
     try{
-    //   dispatch(showLoading);
+      dispatch(showLoading);
       let values = { theatreId: theatre._id, isActive: !theatre.isActive}
       console.log(values)
       const response = await updateTheatre(values);
@@ -44,9 +44,9 @@ function TheatresTable() {
         message.success(response.message);
         getData();
       }
-    //   dispatch(hideLoading);
+      dispatch(hideLoading);
     }catch(err){
-    //   dispatch(hideLoading);
+      dispatch(hideLoading);
       message.error(err.message);
     }
   }
@@ -97,7 +97,7 @@ function TheatresTable() {
       render: (text, data) => {
         return(
           <div className='d-flex align-items-center gap-10'>
-            { data.isActive ? <Button onClick={()=> handleStatusChange(data)}  >Block</Button> : <Button onClick={()=> handleStatusChange(data)}>Approve</Button>  }
+            { data.isActive ? <Button  onClick={()=> handleStatusChange(data)}  >Block</Button> : <Button onClick={()=> handleStatusChange(data)}>Approve</Button>  }
           </div>
         )
       }

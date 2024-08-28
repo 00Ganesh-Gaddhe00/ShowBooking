@@ -28,7 +28,9 @@ const Admin = () => {
     return (
         <>
             <h1>Welcome to Admin panel!</h1>
+            <div className='profile-page'>
             <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+            </div>
         </>
     )
 }

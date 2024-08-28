@@ -9,6 +9,7 @@ function Register() {
 
   const onFinish = async(values) => {
     try{
+      
        const response = await RegisterUser(values)
        if(response.success){
           message.success(response.message)
@@ -24,7 +25,7 @@ function Register() {
   };
 
   return (
-    <div className=' main'> 
+    <div className=' main base'> 
     <div className='reg_cont'>
       <div className='reg_heading'>Register to BoOkSh0w</div>
     <Form

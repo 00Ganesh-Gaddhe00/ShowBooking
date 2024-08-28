@@ -15,5 +15,5 @@ const loaderSlice = createSlice({
      }
 })
 
-export const {ShowLoading, HideLoading} = loaderSlice.actions
+export const {showLoading, hideLoading} = loaderSlice.actions
 export default loaderSlice.reducer

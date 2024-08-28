@@ -3,16 +3,17 @@ import { Modal , Form , Row , Col , Input , Button,message } from "antd";
 import TextArea from 'antd/es/input/TextArea';
 import {addTheatre, updateTheatre} from '../../APIcalls/theatres'
 import {useSelector, useDispatch} from 'react-redux'
+import { showLoading,hideLoading } from "../../redux/loaderslice";
 
 function TheatreFormModal({isModalOpen ,setIsModalOpen, 
   selectedTheatre, setSelectedTheatre, formType, getData }) {
 
     const { user } = useSelector((state) => state.user)
-
+    const dispatch = useDispatch()
 
     const onFinish = async (values)  => {
       try{
-        // dispatch(showLoading());
+        dispatch(showLoading());
         console.log(values)
         console.log(user._id)
         let response = null;
@@ -30,9 +31,9 @@ function TheatreFormModal({isModalOpen ,setIsModalOpen,
         }else{
           message.error(response.message)
         }
-        // dispatch(hideLoading());     
+        dispatch(hideLoading());     
       }catch(err){
-        // dispatch(hideLoading());
+        dispatch(hideLoading());
         message.error(err.message);
       }
     }  
@@ -147,7 +148,7 @@ function TheatreFormModal({isModalOpen ,setIsModalOpen,
             block
             type="primary"
             htmlType="submit"
-            style={{ fontSize: "1rem", fontWeight: "600" }}
+            style={{ fontSize: "1rem", fontWeight: "600",backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)" }}
           >
             Submit the Data
           </Button> 

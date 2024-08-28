@@ -3,7 +3,7 @@ import { GetCurrentUser } from '../APIcalls/users'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { setUser } from '../redux/userSlice';
-import { ShowLoading, HideLoading } from '../redux/loaderslice';
+import { showLoading, hideLoading } from '../redux/loaderslice';
 import { message, Layout, Menu } from 'antd';
 import { useNavigate, Link } from 'react-router-dom';
 import { Header } from "antd/es/layout/layout";
@@ -23,10 +23,9 @@ function ProtectedRoute({ children }) {
 
     const getpresentUser = async () => {
         try {
-          // dispatch(ShowLoading());
+          dispatch(showLoading());
           const response = await GetCurrentUser();
           // console.log(response)
-          // dispatch(HideLoading());
             if(response.success){
               dispatch(setUser(response.data));
               
@@ -35,9 +34,10 @@ function ProtectedRoute({ children }) {
               message.error(response.message);
 
             }
-          
-        } catch (error) {
-        //   dispatch(HideLoading());
+          dispatch(hideLoading());
+
+          } catch (error) {
+          dispatch(hideLoading());
           dispatch(setUser(null));
           localStorage.removeItem("token");
           message.error(error.message);
@@ -60,13 +60,16 @@ function ProtectedRoute({ children }) {
             <Link to='/'>Home</Link>
           ),
           icon: <HomeOutlined />,
+          style:{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"},
+          
         },
     
         {
           key:2,
           label: `${user ? user.name : " "}`,
           icon: <UserOutlined />,
-    
+          style:{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"},
+
           children: [
             {
               key:21,
@@ -80,6 +83,8 @@ function ProtectedRoute({ children }) {
                 </span>
               ),
               icon: <ProfileOutlined />,
+             // style:{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"},
+
             },
             {
               key:22,
@@ -89,6 +94,8 @@ function ProtectedRoute({ children }) {
                 </Link>
               ),
               icon: <LogoutOutlined />,
+             // style:{backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)"},
+              
             },
           ],
         },
@@ -107,15 +114,23 @@ function ProtectedRoute({ children }) {
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
+                backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)",
+               //backgroundColor:'#CD5C5C'
               }}
             >
-              <h3 className="demo-logo text-white m-0" style={{ color: "white" }}>
+              <h3 className="demo-logo text-white m-0" onClick={()=> navigate('/')}  style={{ color: "white", marginLeft:'4rem', cursor:'pointer' }}>
               BoOkSh0w
               </h3>
-              <Menu theme="dark" mode="horizontal" items={navItems }></Menu>
+              <Menu theme="dark"  mode="horizontal" items={navItems } style={
+                {
+                backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)",
+                //backgroundColor:'#CD5C5C',
+                   marginRight:'4rem'
+                }
+              } ></Menu>
             </Header>
   
-            <div style={{ padding: 24, minHeight: 380, background: "#fff" }}>
+            <div className='base' style={{ paddingInline:60, minHeight: 380 }}>
               {children}
             </div>
           </Layout>

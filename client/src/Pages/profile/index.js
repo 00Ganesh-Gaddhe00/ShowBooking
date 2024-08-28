@@ -23,7 +23,10 @@ function Profile() {
   return (
     <div>
         <h1>Welcome {user.name}! to your Profile</h1>
+        <div className='profile-page'>
         <Tabs defaultActiveKey='2' items={TabItems}/>
+        </div>
+
     </div>
   )
 }
