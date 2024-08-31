@@ -78,7 +78,7 @@ function Register() {
 
     <Form.Item>
       <Button 
-      style={{ fontSize: "15px", fontWeight: "600" }}
+      style={{ fontSize: "15px", fontWeight: "600",backgroundImage: "linear-gradient(to top, #922b21, #b03a2e)" }}
        type="primary" htmlType="submit" block>
         Sign Up
       </Button>
