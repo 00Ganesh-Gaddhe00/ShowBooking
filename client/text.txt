@@ -1,0 +1,92 @@
+ShowBooking | FullStack | MongoDB, Express.js, React, Node.js
+
+ . Search and browse movies. select avaiable theathres,shows timings and seats and books a move
+
+ . integerated stripe payment platform using stripe API and tools to perform payments
+
+ . authentication and authorization using JWT token for differents routes for user and admin
+
+ . user and admin have feature to perform CRUD operation on theathres, shows, movies and permissions respectively
+
+ . worked with other librabries like redux/redux Toolkit for managing state and antd UI library for most of the components 
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+ 
+ Developed a movie booking platform allowing users to search and browse movies, select available theatres, showtimes, seats, and book tickets.
+
+
+Integrated the Stripe payment platform using Stripe API to securely handle transactions.
+
+Implemented authentication and authorization using JWT tokens to manage different routes for users and admins.
+
+Enabled both users and admins to perform CRUD operations on theatres, shows, movies, and permissions.
+
+
+Utilized Redux/Redux Toolkit for efficient state management and employed Ant Design (AntD) UI library for building reusable components.
+
+///////////////////////////////
+
+
+Designed and developed a full-featured movie booking platform enabling users to search and browse movies, select theatres, showtimes, and seats, and complete bookings.
+
+Integrated Stripe payment gateway using Stripe API and tools to facilitate secure and efficient payment processing.
+
+Established authentication and authorization protocols using JWT tokens for various user and admin routes, enhancing system security.
+
+Enabled user and admin functionalities to perform CRUD operations on theaters, shows, movies, and permissions, streamlining content management processes.
+
+Leveraged Redux/Redux Toolkit for state management and utilized Ant Design (AntD) for building interactive and responsive UI components.
+
+////////////////////////////////////////////////////////////
+
+Designed and developed a movie booking platform that allows users to search movies, select theatres, showtimes, seats, and complete bookings.
+
+Integrated Stripe payment gateway for secure and seamless payment processing.
+
+Established authentication and authorization protocols using JWT tokens for various user and admin routes, enhancing security.
+
+Streamlined content management processes by enabling users and admins to perform CRUD operations on theatres, shows, movies, and permissions.
+
+
+Utilized Redux/Redux Toolkit for state management and Ant Design (AntD) for UI components.
+
+
+
+streamlining content management processes. Enabled user and admin functionalities to perform CRUD operations on theaters, shows, movies, and permissions,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////
+
+Integrated the Stripe payment platform using Stripe API and tools, facilitating secure transactions and improving payment processing speed by 25%.
+
+Designed and developed a full-featured movie booking platform enabling users to search and browse movies, select theatres, showtimes, and seats, and complete bookings.
+
+Integrated Stripe payment gateway using Stripe API and tools to facilitate secure and efficient payment processing.
+
+Implemented JWT-based authentication and authorization to control user and admin access across various routes.
+
+Built features allowing users and admins to perform CRUD operations on theatres, shows, movies, and manage permissions.
+
+Leveraged Redux/Redux Toolkit for state management and utilized Ant Design (AntD) for building interactive and responsive UI components.
