@@ -14,7 +14,7 @@ const bookingRoutes = require('./routes/bookingRoute.js')
 
 
 const app = express();
-const port = 5001
+const port = process.env.PORT || 5000
 
 
 // app.use(cors())
