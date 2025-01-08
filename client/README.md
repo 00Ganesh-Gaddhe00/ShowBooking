@@ -26,6 +26,9 @@ ShowBooking
   ![CRUD Operations](./CRUD1.png)
  ![CRUD Operations](./CRUD2.png)
 
+- **Performance:**
+Achieved a 96% performance score by optimizing Web Vitals, significantly enhancing user experience and platform efficiency
+![CRUD Operations](./performance.png)
 
 
 
